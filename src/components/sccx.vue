@@ -16,7 +16,7 @@
                 <yjqx ref="Cyjqx" v-on:cdichange_event="curDataIndexChanged"></yjqx>
             </div>
             <div slot="bottom" class="DTable bg-danger demo-split-pane">
-                <h1>Shengchan Biaoge</h1>
+                <h1>Shengchan Biaoge{{msg}}</h1>
                 <yjrdbg ref="Cyjrdbg"></yjrdbg>
             </div>
         </Split>
@@ -38,7 +38,7 @@
             return {
                 msg: '生产 cha xun!',
                 //dbPortUrl:"http://localhost:8080/www/php/daa01port.php",
-                dbPortUrl:"http://192.168.10.132/php/daa01port.php",
+                dbPortUrl:"",//"http://192.168.10.132/php/daa01port.php",
                 isLandscape: false,
                 split1: 0.6,
                 ds: [],
@@ -79,6 +79,9 @@
             $(".my-split").css("height", window.screen.height - 50 + "px");
             $(".my-split").css("width", window.screen.width + "px");
             $(".DGraph").css("height", sf.split1 * curHeight + "px");
+            //set dbportHostIP
+            //this.msg=DBPortURL.baseURL;
+            this.dbPortUrl=DBPortURL.baseURL;
             //axios
             this.axios.get(this.dbPortUrl).then(body => {
                 //this.axios.get("http://localhost:3001/123").then(body=>{
